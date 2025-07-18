@@ -50,14 +50,28 @@ const obtenerPartidaPorId = (req, res) => {
 };
 
 // Crear nueva partida
+const calcularResultado = (req, res) => {
+  const { idUsuario, idCpu } = req.body;
+
+  if (idUsuario == null || idCpu == null) {
+    return res.status(400).json({ error: 'Faltan parámetros' });
+  }
+
+  if (idUsuario === idCpu) return res.json({ id: 3 }); // Empate
+
+  const ganaUsuario = (
+    (idUsuario === 1 && idCpu === 3) ||
+    (idUsuario === 2 && idCpu === 1) ||
+    (idUsuario === 3 && idCpu === 2)
+  );
+
+  return res.json({ id: ganaUsuario ? 1 : 2 }); // 1=Victoria, 2=Derrota
+};
+
 const crearPartida = (req, res) => {
   const { id_opcion_usuario, id_opcion_cpu, id_resultado } = req.body;
 
-  if (
-    !id_opcion_usuario ||
-    !id_opcion_cpu ||
-    !id_resultado
-  ) {
+  if (!id_opcion_usuario || !id_opcion_cpu || !id_resultado) {
     return res.status(400).json({ error: 'Faltan datos obligatorios' });
   }
 
@@ -76,6 +90,10 @@ const crearPartida = (req, res) => {
     });
   });
 };
+
+
+
+
 
 // Actualizar una partida (solo resultado y elecciones)
 const actualizarPartida = (req, res) => {
@@ -129,5 +147,6 @@ module.exports = {
   obtenerPartidaPorId,
   crearPartida,
   actualizarPartida,
-  eliminarPartida
+  eliminarPartida,
+  calcularResultado
 };
