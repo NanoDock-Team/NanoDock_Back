@@ -5,11 +5,10 @@ const port = 3000;
 
 const db = require('./config/database'); 
 
-// Middlewares
-app.use(cors()); // <-- Y esta
+app.use(cors()); 
 app.use(express.json());
 
-// Rutas
+// Rutas para las diferentes funcionalidades
 const opcionesRoutes = require('./routes/opcionesRoutes');
 const resultadosRoutes = require('./routes/resultadosRoutes');
 const partidasRoutes = require('./routes/partidasRoutes');
