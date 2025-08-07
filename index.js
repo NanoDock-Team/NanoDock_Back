@@ -13,6 +13,10 @@ app.use("/api/opciones", require("./routes/opcionesRoutes"));
 app.use("/api/resultados", require("./routes/resultadosRoutes"));
 app.use("/api/partidas", require("./routes/partidasRoutes"));
 
+app.get('/', (req, res) => {
+  res.send('Backend está corriendo correctamente');
+});
+
 // filepath: /home/luis-lr/Documentos/U4_BARRON/NanoDock_Back/index.js
 /* istanbul ignore next */
 if (require.main === module) {
