@@ -14,7 +14,6 @@ app.use('/api/opciones', opcionesRoutes);
 app.use('/api/resultados', resultadosRoutes);
 app.use('/api/partidas', partidasRoutes);
 
-
 app.get('/', (req, res) => {
   res.send('Backend está corriendo correctamente');
 });
