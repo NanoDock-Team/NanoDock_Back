@@ -14,6 +14,12 @@ app.use('/api/opciones', opcionesRoutes);
 app.use('/api/resultados', resultadosRoutes);
 app.use('/api/partidas', partidasRoutes);
 
+
+app.get('/', (req, res) => {
+  res.send('Backend está corriendo correctamente');
+});
+
+// Inicialización del servidor
 app.listen(port, () => {
   console.log(`Servidor en http://localhost:${port}`);
 });
