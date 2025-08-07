@@ -10,7 +10,7 @@ RUN npm install
 
 COPY . .
 
-# Expone el puerto que usa tu app (verifica que es 3000 o el que uses)
+# Expone el puerto que usa la app 
 EXPOSE 3000
 
 # Comando para correr la app
